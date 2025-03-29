@@ -11,6 +11,7 @@
     let cI = $state(0); //index for CONTENT array
     let { CONTENT } = $props();
     let content = CONTENT[cI];
+    const callBack = () => console.log("next pls");
     let handler = content.handler;
     let text = $state('');   
     let buttonContent = content.buttonContent;
@@ -49,7 +50,7 @@ wrapper();
 </h1>
 
 {#if content.type === "button"}
-    <Button {buttonContent} {handler} />
+    <Button {buttonContent} {handler} {callBack} />
 {:else if content.type === "input"}
     <Input />
 {/if}
