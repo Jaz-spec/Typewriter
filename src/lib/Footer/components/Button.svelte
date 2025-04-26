@@ -1,15 +1,18 @@
 <script>
-    let { buttonContent, handler } = $props();
-$inspect(buttonContent);
+    let {buttonContent, callBack} = $props();
+    
+    $inspect(buttonContent);
 </script>
 
-<!-- MARKUP -->
-{#each buttonContent.content as content, i}
+
+<!--MARKUP -->
+{#each buttonContent.content as content}
 <button 
 
 class={buttonContent.ready === false ? 'hidden' : ''}
-onclick="{handler[i]}"
-
+onclick={() => {
+    callBack(buttonContent.handler)}
+}
 > {content}</button>
 {/each}
 
@@ -17,4 +20,4 @@ onclick="{handler[i]}"
     .hidden {
         display: none;
     }
-</style>
+</style> 

@@ -6,7 +6,8 @@
 		"build": "vite build && npm run prepack",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
-		"prepack": "svelte-kit sync && svelte-package && publint"
+		"prepack": "svelte-kit sync && svelte-package && publint",
+		"check": "npx svelte-check"
 	},
 	"files": [
 		"dist",
@@ -33,9 +34,12 @@
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/package": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@tsconfig/svelte": "^5.0.4",
 		"publint": "^0.3.2",
 		"svelte": "^5.0.0",
-		"typescript": "^5.3.2",
+		"svelte-check": "^4.1.6",
+		"svelte-preprocess": "^6.0.3",
+		"typescript": "^5.8.3",
 		"vite": "^6.0.0"
 	},
 	"keywords": [

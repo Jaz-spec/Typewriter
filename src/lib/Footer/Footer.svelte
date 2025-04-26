@@ -10,27 +10,36 @@
 
     let cI = $state(0); //index for CONTENT array
     let { CONTENT } = $props();
-    let content = CONTENT[cI];
-    let handler = content.handler;
-    let text = $state('');   
-    let buttonContent = content.buttonContent;
+    let content = $derived(CONTENT[cI]);
 
-function wrapper() {
-    let i = $state(0); //index for string --> typewriter()
-    let time = $state(calcTime(content.string, content.delay, content.pause))
+    const callBack = (log) => {
+        if(log === "next") {
+            cI++;
+            text = '';
+            wrapper();
+        }
+    }
     
+    let text = $state('');   
+    let buttonContent = $derived(content.buttonContent);
+
     
-    function typewriter() {
+    function wrapper() {
+        let i = $state(0); //index for string --> typewriter()
+        let time = $state(calcTime(content.string, content.delay, content.pause))
         
-        setTimeout(() => {
-            buttonContent.ready = true;
-        }, time)
+    
+        function typewriter() {
         
-        if (i < content.string.length) {
-            setTimeout(() => {     
-                text += content.string[i];
-                i++;
-                typewriter();
+            setTimeout(() => {
+                buttonContent.ready = true;
+            }, time)
+        
+            if (i < content.string.length) {
+                setTimeout(() => {     
+                    text += content.string[i];
+                    i++;
+                    typewriter();
             }, 50);
         }
     }   
@@ -49,7 +58,7 @@ wrapper();
 </h1>
 
 {#if content.type === "button"}
-    <Button {buttonContent} {handler} />
+    <Button {buttonContent} {callBack}/>
 {:else if content.type === "input"}
     <Input />
 {/if}
