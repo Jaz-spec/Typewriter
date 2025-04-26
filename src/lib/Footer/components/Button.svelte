@@ -1,7 +1,5 @@
 <script>
     let {buttonContent, callBack} = $props();
-    
-    $inspect(buttonContent);
 </script>
 
 

@@ -1,12 +1,13 @@
 export {};
 
 declare global {
-	declare namespace App {
-		interface PageData {
-			contentItems: ContentItem[];
+	namespace NodeJS {
+		interface ProcessEnv {
+			BACKEND_URL: string;
 		}
 	}
 
+	//contentitem and Data to be the same when content is stored in a database
 	interface ContentItem {
 		type: string;
 		string: string;
@@ -18,5 +19,9 @@ declare global {
 			content: string[];
 			handler: string;
 		};
+	}
+
+	interface Data {
+		text: string;
 	}
 }
