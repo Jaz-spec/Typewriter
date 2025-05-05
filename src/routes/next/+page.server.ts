@@ -5,10 +5,10 @@ dotenv.config();
 
 export const load: PageServerLoad = async () => {
 	const response = await fetch(`${process.env.BACKEND_URL}/api`);
-	const data: Data = await response.json();
-	console.log(data);
+	const data: Data[] = await response.json();
+	console.log("DATA @server:", data);
 
 	if (data) {
-		return data;
+		return  { user: data };
 	}
 };

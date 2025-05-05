@@ -22,6 +22,9 @@ declare global {
 	}
 
 	interface Data {
-		text: string;
+		id: number;
+		created_at: string;
+		name: string;
+		number_of_logins: number | null;
 	}
 }
